@@ -1,8 +1,8 @@
 const express = require('express');
+require('dotenv').config()
 const morgan = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const db = require('./db');
 
 const turmas = require('./routes/turmas');
 const administradores = require('./routes/administradores');
@@ -12,10 +12,9 @@ const frequencia = require('./routes/alunosDependencies/frequencia');
 const mes = require('./routes/alunosDependencies/mes');
 const notas = require('./routes/alunosDependencies/notas');
 const services = require('./routes/services')
+const setup = require('./routes/setup')
 
 const app = express();
-
-db.openDb();
 
 app.use(cors());
 app.use(morgan('dev'));
@@ -30,6 +29,7 @@ app.use("/frequencia", frequencia);
 app.use("/mes", mes)
 app.use("/notas", notas)
 app.use('/services', services)
+app.use('/setup', setup)
 
 
 module.exports = app;

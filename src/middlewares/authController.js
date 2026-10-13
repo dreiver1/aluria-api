@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken")
 module.exports = (request, response, next) => {
   const authorization =request.headers.authorization
   if (!authorization) {
-    return response.status(500).send({ message: "Login obrigatorio!" }) 
+    return response.status(401).send({ message: "Login obrigatorio!" })
   }
   const token = authorization.split(' ')[1];
   jwt.verify(token, process.env.JWT_KEY, (error, decode) => {

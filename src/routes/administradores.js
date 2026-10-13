@@ -5,7 +5,7 @@ const auth = require('../middlewares/authController');
 
 router.get("/", auth, administradoresControlers.GetAllAdmin);
 router.get("/:id", auth, administradoresControlers.GetAdminById);
-router.post("/",  administradoresControlers.CreateAdmin);
+router.post("/", auth, administradoresControlers.CreateAdmin);
 router.put("/:id", auth, administradoresControlers.AlteraAdmin);
 router.delete("/:id", auth, administradoresControlers.DelteAdm);
 router.post('/login',  administradoresControlers.conectAdmin);

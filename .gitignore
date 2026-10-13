@@ -1,4 +1,6 @@
 node_modules
+database.db
+database.db-*
 schemabd.mwb
 # Keep environment variables out of version control
 .env

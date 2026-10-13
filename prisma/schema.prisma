@@ -43,6 +43,19 @@ model administradores {
   @@unique(fields: [email], name: "usuario")
 }
 
+model InstallationState {
+  id                     Int       @id @default(1)
+  status                 String    @default("UNCONFIGURED")
+  bootstrapCodeHash      String?
+  bootstrapCodeExpiresAt DateTime?
+  attemptCount           Int       @default(0)
+  lockedUntil            DateTime?
+  consumedAt             DateTime?
+  configuredAt           DateTime?
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+}
+
 model notas {
   idnotas       Int     @id @default(autoincrement())
   nota01        Float?
